@@ -91,4 +91,6 @@ return {
             })
         end
     },
+    {"habamax/vim-godot", event = "BufEnter *.gd"},
+    {"numToStr/Comment.nvim", config = function() require('Comment').setup() end},
 }

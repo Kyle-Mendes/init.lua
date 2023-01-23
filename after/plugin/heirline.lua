@@ -119,18 +119,7 @@ local ViMode = {
         "ModeChanged",
     },
 }
-function dump(o)
-   if type(o) == 'table' then
-      local s = '{ '
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
-      end
-      return s .. '} '
-   else
-      return tostring(o)
-   end
-end
+local Vi = utils.surround({ "", "" }, function(self) return mode_color() end, {ViMode, hl = {fg = 'black'}} )
 
 local TabMod = { -- Add an unsaved indicator
     provider = function(self)
@@ -184,10 +173,27 @@ local TabPages = {
     TabpageClose,
 }
 
+local LSPActive = {
+    condition = conditions.lsp_attached,
+    update = {'LspAttach', 'LspDetach'},
 
-local Vi = utils.surround({ "", "" }, function(self) return mode_color() end, {ViMode, hl = {fg = 'black'}} )
+    -- You can keep it simple,
+    -- provider = " [LSP]",
 
-local StatusLine = { Vi, }
+    -- Or complicate things a bit and get the servers names
+    provider  = function()
+        local names = {}
+        for i, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+            table.insert(names, server.name)
+        end
+        return " [" .. table.concat(names, " ") .. "]"
+    end,
+    hl = { fg = palette.foam, bold = true },
+}
+
+local Align = { provider = "%=" }
+
+local StatusLine = { Vi, Align, LSPActive, }
 local WinBar = {}
 local TabLine = { TabPages, }
 local StatusColumn = {}
@@ -198,3 +204,19 @@ require("heirline").setup({
     tabline = TabLine,
     -- statuscolumn = StatusColumn,
 })
+
+
+-- Util
+function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
+
