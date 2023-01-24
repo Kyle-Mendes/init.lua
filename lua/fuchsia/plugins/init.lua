@@ -61,7 +61,10 @@ return {
     },
 
     -- LSP Zero
-    {'VonHeikemen/lsp-zero.nvim', branch = 'v1.x'},
+    {"VonHeikemen/lsp-zero.nvim", branch = 'v1.x'},
+
+    -- Icons
+    {"nvim-tree/nvim-web-devicons"},
 
     -- LSP Support
     {'neovim/nvim-lspconfig'},             -- Required

@@ -38,3 +38,7 @@ lsp.on_attach(function(client, bufnr) -- Only apply to the buffer if it has LSP
 end)
 
 lsp.setup()
+
+vim.diagnostic.config({
+    virtual_text = true,
+})

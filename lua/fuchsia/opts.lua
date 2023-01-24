@@ -23,3 +23,5 @@ o.wrap = true
 o.number = true
 o.relativenumber = true
 o.termguicolors = true
+
+o.laststatus = 3
