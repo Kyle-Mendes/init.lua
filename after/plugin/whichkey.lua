@@ -13,6 +13,9 @@ wk.register({
         b = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle showing git blame" },
         d = "LSP - Definition",
         r = "LSP - References",
+        l = {
+            c = {"<cmd>GH<cr>", 'Copy Link GH for selection'}
+        },
     },
     p = {
         v = "open file explorer",

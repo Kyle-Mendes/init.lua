@@ -50,7 +50,7 @@ local FileFlags = {
             return vim.bo.modified
         end,
         provider = "[+]",
-        hl = { fg = "green", bg = "black" },
+        hl = { fg = palette.foam, bg = "black" },
     },
     {
         condition = function()
