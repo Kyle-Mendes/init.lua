@@ -63,6 +63,7 @@ return {
 
     -- LSP Zero
     {"VonHeikemen/lsp-zero.nvim", branch = 'v1.x'},
+    {"nvim-lua/lsp-status.nvim"}, -- LSP Status for Heirline
 
     -- Icons
     {"nvim-tree/nvim-web-devicons"},

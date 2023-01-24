@@ -7,6 +7,9 @@ local CurrentFile = require("fuchsia.components.currentFile")
 local Mode = require("fuchsia.components.mode")
 local TabPages = require("fuchsia.components.tabs")
 
+local lsp_status = require('lsp-status')
+lsp_status.register_progress()
+
 local LSPActive = {
     condition = conditions.lsp_attached,
     update = {'LspAttach', 'LspDetach'},
@@ -15,7 +18,7 @@ local LSPActive = {
     -- provider = " [LSP]",
 
     -- Or complicate things a bit and get the servers names
-    provider  = function()
+    provider = function()
         local names = {}
         for i, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
             table.insert(names, server.name)
@@ -25,10 +28,17 @@ local LSPActive = {
     hl = { fg = palette.foam, bold = true },
 }
 
+local LSPMessages = {
+    provider = function()
+        return require("lsp-status").status()
+    end,
+    hl = { fg = "gray" },
+}
+
 local Align = { provider = "%=" }
 local Space = { provider = " " }
 
-local StatusLine = { Mode.Mode, CurrentFile, Align, LSPActive, }
+local StatusLine = { Mode.Mode, CurrentFile, Align, LSPActive, LSPMessages, }
 local WinBar = {}
 local TabLine = { TabPages, }
 local StatusColumn = {}
