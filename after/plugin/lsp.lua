@@ -49,6 +49,7 @@ lsp.configure("pyright", {
         },
     },
 })
+lsp.setup()
 lsp.configure('sumneko_lua', {
     settings = {
         Lua = {
@@ -58,6 +59,7 @@ lsp.configure('sumneko_lua', {
         }
     }
 })
+lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = true,
