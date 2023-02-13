@@ -41,7 +41,6 @@ local FileName = {
         return filename
     end,
     hl = { fg = Mode.mode_color(), bg = "black" },
-    update = { "ModeChanged" },
 }
 
 local FileFlags = {

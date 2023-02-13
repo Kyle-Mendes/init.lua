@@ -4,11 +4,14 @@ local g = vim.g
 
 o.guicursor = ""
 
-o.tabstop = 4
-o.softtabstop = 4
-o.shiftwidth = 4
-o.expandtab = true
+o.tabstop = 2
+o.softtabstop = 2
+o.shiftwidth = 2
+-- o.expandtab = true
 o.preserveindent = true
+
+o.splitright = true
+o.splitbelow = true
 
 o.swapfile = false
 o.backup = false
@@ -28,6 +31,7 @@ o.termguicolors = true
 
 o.laststatus = 3
 
+o.ignorecase = true
 o.smartcase = true
 o.showtabline = 2
 

@@ -4,12 +4,10 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
     "tsserver",
-    "eslint",
     "sumneko_lua",
     "pyright",
 })
 
--- Fix Undefined global 'vim'
 require 'lspconfig'.gdscript.setup {} -- Enable GDScript
 
 local cmp = require("cmp")
@@ -49,7 +47,8 @@ lsp.configure("pyright", {
         },
     },
 })
-lsp.setup()
+
+-- Fix Undefined global 'vim'
 lsp.configure('sumneko_lua', {
     settings = {
         Lua = {
@@ -65,10 +64,9 @@ vim.diagnostic.config({
     virtual_text = true,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = buffer,
-    callback = function()
-        print('formatting')
-        vim.lsp.buf.format { async = false }
-    end
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--     buffer = buffer,
+--     callback = function()
+--         vim.lsp.buf.format { async = false }
+--     end
+-- })

@@ -1,35 +1,35 @@
 return {
-	{"machakann/vim-sandwich"},
-	{
-		'rose-pine/neovim',
-		name = 'rose-pine',
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("rose-pine").setup({
-				dark_variant = "moon",
-			})
-			vim.cmd("colorscheme rose-pine")
-		end
-	},
-	{
-		"nvim-treesitter/playground",
-		cmd = { "TSPlayground", "TSPlay" }, -- lazy loads on these commands
-	},
-	{"ThePrimeagen/harpoon"},
-	{"tpope/vim-fugitive"},
-	{
-		"folke/which-key.nvim",
-		config = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-			require("which-key").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	},
+    { "machakann/vim-sandwich" },
+    {
+        'rose-pine/neovim',
+        name = 'rose-pine',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("rose-pine").setup({
+                dark_variant = "moon",
+            })
+            vim.cmd("colorscheme rose-pine")
+        end
+    },
+    {
+        "nvim-treesitter/playground",
+        cmd = { "TSPlayground", "TSPlay" }, -- lazy loads on these commands
+    },
+    { "ThePrimeagen/harpoon" },
+    { "tpope/vim-fugitive" },
+    {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup({
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            })
+        end,
+    },
     {
         "lewis6991/gitsigns.nvim",
         config = function()
@@ -52,7 +52,11 @@ return {
             }
         end
     },
-    {"ruanyl/vim-gh-line"},
+    {
+        'ruifm/gitlinker.nvim',
+        config = function() require"gitlinker".setup() end
+
+    },
 
     -- Autopairs
     {
@@ -61,29 +65,34 @@ return {
         config = function() require("nvim-autopairs").setup() end
     },
 
+    -- Colorizor
+    { 'norcalli/nvim-colorizer.lua' },
+
     -- LSP Zero
-    {"VonHeikemen/lsp-zero.nvim", branch = 'v1.x'},
-    {"nvim-lua/lsp-status.nvim"}, -- LSP Status for Heirline
+    { "VonHeikemen/lsp-zero.nvim", branch = 'v1.x' },
+    { "nvim-lua/lsp-status.nvim" }, -- LSP Status for Heirline
 
     -- Icons
-    {"nvim-tree/nvim-web-devicons"},
+    { "nvim-tree/nvim-web-devicons" },
 
     -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {'williamboman/mason.nvim'},           -- Optional
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    { 'neovim/nvim-lspconfig' }, -- Required
+    { 'jose-elias-alvarez/null-ls.nvim' }, -- Null-ls
+    { 'jay-babu/mason-null-ls.nvim' }, -- Null-ls mason bridge
+    { 'williamboman/mason.nvim' }, -- Optional
+    { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
     -- Autocompletion Engine
-    {'hrsh7th/nvim-cmp'},         -- Required
-    {'hrsh7th/cmp-nvim-lsp'},     -- Required
-    {'hrsh7th/cmp-buffer'},       -- Optional
-    {'hrsh7th/cmp-path'},         -- Optional
-    {'saadparwaiz1/cmp_luasnip'}, -- Optional
-    {'hrsh7th/cmp-nvim-lua'},     -- Optional
+    { 'hrsh7th/nvim-cmp' }, -- Required
+    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+    { 'hrsh7th/cmp-buffer' }, -- Optional
+    { 'hrsh7th/cmp-path' }, -- Optional
+    { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+    { 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
     -- Snippets
-    {'L3MON4D3/LuaSnip'},             -- Required
-    {'rafamadriz/friendly-snippets'}, -- Optional
+    { 'L3MON4D3/LuaSnip' }, -- Required
+    { 'rafamadriz/friendly-snippets' }, -- Optional
 
     -- Heirline
     {
@@ -96,6 +105,10 @@ return {
             })
         end
     },
-    {"habamax/vim-godot", event = "BufEnter *.gd"},
-    {"numToStr/Comment.nvim", config = function() require('Comment').setup() end},
+
+    -- Misc Stuff
+    { "habamax/vim-godot", event = "BufEnter *.gd" },
+    { "numToStr/Comment.nvim", config = function() require('Comment').setup() end },
+    { "Darazaki/indent-o-matic" },
+    { "goolord/alpha-nvim" },
 }
