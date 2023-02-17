@@ -1,5 +1,14 @@
 return {
     { "machakann/vim-sandwich" },
+
+    -- Noice
+    {
+        "folke/noice.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    },
     {
         'rose-pine/neovim',
         name = 'rose-pine',
@@ -111,4 +120,12 @@ return {
     { "numToStr/Comment.nvim", config = function() require('Comment').setup() end },
     { "Darazaki/indent-o-matic" },
     { "goolord/alpha-nvim" },
+
+    -- Pets
+    {
+        "giusgad/pets.nvim",
+        dev = true,
+        dependencies = { "edluffy/hologram.nvim", "MunifTanjim/nui.nvim", }
+    },
+
 }
